@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 10px gray;
+            border-radius: 5px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>User Information Form</h2>
+    
+    <label for="name">Name:</label>
+    <input type="text" id="name">
+    <span class="error" id="nameError"></span>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email">
+    <span class="error" id="emailError"></span>
+
+    <label for="mobile">Mobile Number:</label>
+    <input type="text" id="mobile" maxlength="10">
+    <span class="error" id="mobileError"></span>
+
+    <label>Gender:</label>
+    <select id="gender">
+        <option value="">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+    </select>
+    <span class="error" id="genderError"></span>
+
+    <label for="color">Favorite Colour:</label>
+    <input type="text" id="color">
+    <span class="error" id="colorError"></span>
+
+    <button onclick="displayInfo()">Submit</button>
+
+    <h3>Collected Information:</h3>
+    <textarea id="output" rows="5" readonly></textarea>
+</div>
+
+<script>
+    function displayInfo() {
+        // Get values from inputs
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let mobile = document.getElementById("mobile").value.trim();
+        let gender = document.getElementById("gender").value;
+        let color = document.getElementById("color").value.trim();
+
+        // Error elements
+        let nameError = document.getElementById("nameError");
+        let emailError = document.getElementById("emailError");
+        let mobileError = document.getElementById("mobileError");
+        let genderError = document.getElementById("genderError");
+        let colorError = document.getElementById("colorError");
+
+        // Reset errors
+        nameError.innerHTML = "";
+        emailError.innerHTML = "";
+        mobileError.innerHTML = "";
+        genderError.innerHTML = "";
+        colorError.innerHTML = "";
+
+        let isValid = true;
+
+        // Validation
+        if (name === "") {
+            nameError.innerHTML = "Name is required.";
+            isValid = false;
+        }
+        if (email === "" || !email.includes("@") || !email.includes(".")) {
+            emailError.innerHTML = "Valid email is required.";
+            isValid = false;
+        }
+        if (mobile === "" || isNaN(mobile) || mobile.length !== 10) {
+            mobileError.innerHTML = "Valid 10-digit mobile number is required.";
+            isValid = false;
+        }
+        if (gender === "") {
+            genderError.innerHTML = "Please select gender.";
+            isValid = false;
+        }
+        if (color === "") {
+            colorError.innerHTML = "Favorite color is required.";
+            isValid = false;
+        }
+
+        // If valid, display in textarea
+        if (isValid) {
+            let info = `Name: ${name}\nEmail: ${email}\nMobile: ${mobile}\nGender: ${gender}\nFavorite Color: ${color}`;
+            document.getElementById("output").value = info;
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Students>
+    <Student>
+        <EnrollmentNumber>2024001</EnrollmentNumber>
+        <Name>John Doe</Name>
+        <MobileNumber>+1234567890</MobileNumber>
+        <EmailID>johndoe@example.com</EmailID>
+    </Student>
+    <Student>
+        <EnrollmentNumber>2024002</EnrollmentNumber>
+        <Name>Jane Smith</Name>
+        <MobileNumber>+0987654321</MobileNumber>
+        <EmailID>janesmith@example.com</EmailID>
+    </Student>
+</Students>

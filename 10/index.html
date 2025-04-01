@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Time Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: #fff;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        input, select, button {
+            padding: 10px;
+            margin: 5px;
+        }
+        .btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Dynamic Time Table Generator</h2>
+    
+    <label>Day:</label>
+    <select id="day">
+        <option>Monday</option>
+        <option>Tuesday</option>
+        <option>Wednesday</option>
+        <option>Thursday</option>
+        <option>Friday</option>
+        <option>Saturday</option>
+    </select>
+
+    <label>Time:</label>
+    <input type="text" id="time" placeholder="e.g. 10:00 AM - 11:00 AM">
+
+    <label>Subject:</label>
+    <input type="text" id="subject" placeholder="Enter Subject">
+
+    <button class="btn" onclick="addEntry()">Add Entry</button>
+
+    <table id="timetable">
+        <tr>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Subject</th>
+            <th>Action</th>
+        </tr>
+    </table>
+
+    <script>
+        function addEntry() {
+            let day = document.getElementById("day").value;
+            let time = document.getElementById("time").value;
+            let subject = document.getElementById("subject").value;
+
+            if (time === "" || subject === "") {
+                alert("Please enter all details.");
+                return;
+            }
+
+            let table = document.getElementById("timetable");
+            let row = table.insertRow(-1);
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+            let cell3 = row.insertCell(2);
+            let cell4 = row.insertCell(3);
+
+            cell1.innerHTML = day;
+            cell2.innerHTML = time;
+            cell3.innerHTML = subject;
+            cell4.innerHTML = '<button class="btn" onclick="removeRow(this)">Remove</button>';
+        }
+
+        function removeRow(btn) {
+            let row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
+
+</body>
+</html>
