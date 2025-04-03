@@ -80,21 +80,18 @@
 
 <script>
     function displayInfo() {
-        // Get values from inputs
         let name = document.getElementById("name").value.trim();
         let email = document.getElementById("email").value.trim();
         let mobile = document.getElementById("mobile").value.trim();
         let gender = document.getElementById("gender").value;
         let color = document.getElementById("color").value.trim();
 
-        // Error elements
         let nameError = document.getElementById("nameError");
         let emailError = document.getElementById("emailError");
         let mobileError = document.getElementById("mobileError");
         let genderError = document.getElementById("genderError");
         let colorError = document.getElementById("colorError");
 
-        // Reset errors
         nameError.innerHTML = "";
         emailError.innerHTML = "";
         mobileError.innerHTML = "";
@@ -103,7 +100,6 @@
 
         let isValid = true;
 
-        // Validation
         if (name === "") {
             nameError.innerHTML = "Name is required.";
             isValid = false;
@@ -125,7 +121,6 @@
             isValid = false;
         }
 
-        // If valid, display in textarea
         if (isValid) {
             let info = `Name: ${name}\nEmail: ${email}\nMobile: ${mobile}\nGender: ${gender}\nFavorite Color: ${color}`;
             document.getElementById("output").value = info;
